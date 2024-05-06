@@ -6,6 +6,7 @@ package ngo_24;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 /**
@@ -16,8 +17,10 @@ public class Meny extends javax.swing.JFrame {
     
   private InfDB idb;
   private String inloggadAnvandare;
+    private DefaultTableModel projTab;
     /**
      * Creates new form Meny
+     * @param idb
      */
     public Meny(InfDB idb,String inloggadAnvandare) {
         this.idb = idb;
@@ -75,7 +78,7 @@ public class Meny extends javax.swing.JFrame {
     try {
         String dbProjekt = idb.fetchSingle(sqlFraga2);
         if (dbProjekt != null) { // Kontrollera om ett projekt har hämtats från databasen
-            new Projekt(idb, ePost).setVisible(true); // Skapa och visa Projekt-fönstret
+           new ProjektNy(idb, ePost, projTab).setVisible(true); // Skapa och visa Projekt-fönstret
         } else {
             System.out.println("Inga projekt hittades för användaren."); // Meddelande om inga projekt hittades
         }
