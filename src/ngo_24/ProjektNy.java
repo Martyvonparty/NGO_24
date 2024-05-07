@@ -93,9 +93,14 @@ public class ProjektNy extends javax.swing.JFrame {
         private void fyllProjektTabell() {
 String ePost = lblInloggadAnvandare.getText();
 String sqlFraga = "SELECT projekt.* FROM projekt INNER JOIN ans_proj ON projekt.PID = ans_proj.PID INNER JOIN anstalld ON ans_proj.AID = anstalld.AID WHERE anstalld.AID = '" + ePost + "'";
-    try {
+String sqlFragaPID = "Select PID FROM projekt INNER JOIN ans_proj ON projekt.PID = ans_proj.PID INNER JOIN anstalld ON ans_proj.AID = anstalld.AID WHERE anstalld.AID = '" + ePost + "'";
+
+
+
+try {
+    HashMap <sqlFragaPID, Object> projektData = new HashMap <sqlFragaPID, Object>;
         // Hämta flera rader med projektinformation från databasen
-        ArrayList<HashMap<String, String>> projektData = idb.fetchRows(sqlFraga);
+        ArrayList<HashMap<sqlFragaPID, Object>> projektData = idb.fetchRows(sqlFraga);
 
         // Skapa en ny DefaultTableModel för att hålla projektdata
         projTab = new DefaultTableModel();
@@ -111,7 +116,7 @@ String sqlFraga = "SELECT projekt.* FROM projekt INNER JOIN ans_proj ON projekt.
         projTab.addColumn("Land");
 
         // Lägg till varje rad i tabellen
-        for (HashMap<String, String> rad : projektData) {
+        for (HashMap<Int, Object> rad : projektData) {
             Object[] row = new Object[10]; // Skapa en ny array för varje rad med 10 kolumner
             row[0] = rad.get("PID");
             row[1] = rad.get("Projektnamn");
@@ -126,9 +131,10 @@ String sqlFraga = "SELECT projekt.* FROM projekt INNER JOIN ans_proj ON projekt.
 
             projTab.addRow(row); // Lägg till raden i tabellen
         }
+        tblProjekt.setModel(projTab);
 
         // Koppla tabellmodellen till JTable
-        //jTable.setModel(projtab);
+      
 
     } catch (InfException ex) {
         System.out.println(ex.getMessage());
