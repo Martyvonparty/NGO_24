@@ -98,10 +98,8 @@ String sqlFragaPID = "Select PID FROM projekt INNER JOIN ans_proj ON projekt.PID
 
 
 try {
-    HashMap <sqlFragaPID, Object> projektData = new HashMap <sqlFragaPID, Object>;
         // Hämta flera rader med projektinformation från databasen
-        ArrayList<HashMap<sqlFragaPID, Object>> projektData = idb.fetchRows(sqlFraga);
-
+        ArrayList<HashMap<String, String>> projektData = idb.fetchRows(sqlFraga);
         // Skapa en ny DefaultTableModel för att hålla projektdata
         projTab = new DefaultTableModel();
         projTab.addColumn("Projekt ID");
@@ -116,7 +114,7 @@ try {
         projTab.addColumn("Land");
 
         // Lägg till varje rad i tabellen
-        for (HashMap<Int, Object> rad : projektData) {
+      for (HashMap<String, String> rad : projektData) {
             Object[] row = new Object[10]; // Skapa en ny array för varje rad med 10 kolumner
             row[0] = rad.get("PID");
             row[1] = rad.get("Projektnamn");
