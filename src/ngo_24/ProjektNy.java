@@ -37,22 +37,27 @@ public class ProjektNy extends javax.swing.JFrame {
 
         lblProjekt = new javax.swing.JLabel();
         lblInloggadAnvandare = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
         tblProjekt = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblProjekt.setText("Dina projekt");
 
+        tblProjekt.setAutoCreateRowSorter(true);
         tblProjekt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblProjekt);
+        jScrollPane3.setViewportView(tblProjekt);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,25 +67,25 @@ public class ProjektNy extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(588, 588, 588)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addGap(81, 81, 81)
+                        .addComponent(jScrollPane3)
+                        .addGap(143, 143, 143)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lblInloggadAnvandare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane3)
+                .addContainerGap())
         );
 
         pack();
@@ -92,14 +97,14 @@ public class ProjektNy extends javax.swing.JFrame {
 
         private void fyllProjektTabell() {
 String ePost = lblInloggadAnvandare.getText();
-String sqlFraga = "SELECT projekt.* FROM projekt INNER JOIN ans_proj ON projekt.PID = ans_proj.PID INNER JOIN anstalld ON ans_proj.AID = anstalld.AID WHERE anstalld.AID = '" + ePost + "'";
-String sqlFragaPID = "Select PID FROM projekt INNER JOIN ans_proj ON projekt.PID = ans_proj.PID INNER JOIN anstalld ON ans_proj.AID = anstalld.AID WHERE anstalld.AID = '" + ePost + "'";
+//String sqlFraga = "SELECT projekt.* FROM projekt INNER JOIN ans_proj ON projekt.PID = ans_proj.PID INNER JOIN anstalld ON ans_proj.AID = anstalld.AID WHERE anstalld.AID = '" + ePost + "'";
+String sqlFragaPID = "SELECT projekt.pid FROM projekt INNER JOIN ans_proj ON projekt.PID = ans_proj.PID INNER JOIN anstalld ON ans_proj.AID = anstalld.AID WHERE anstalld.AID = '" + ePost + "'";
 
 
 
 try {
         // Hämta flera rader med projektinformation från databasen
-        ArrayList<HashMap<String, String>> projektData = idb.fetchRows(sqlFraga);
+       ArrayList<HashMap<String, String>> projektData = idb.fetchRows(sqlFragaPID);
         // Skapa en ny DefaultTableModel för att hålla projektdata
         projTab = new DefaultTableModel();
         projTab.addColumn("Projekt ID");
@@ -177,6 +182,8 @@ try {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblInloggadAnvandare;
     private javax.swing.JLabel lblProjekt;
     private javax.swing.JTable tblProjekt;

@@ -6,6 +6,7 @@ package ngo_24;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -46,11 +47,8 @@ public class Meny extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(java.awt.Color.lightGray);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(lblInloggadAnvandare, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 55, 179, 23));
 
         lblValkommen.setText("Väkommen!");
-        getContentPane().add(lblValkommen, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 33, -1, -1));
 
         btnProjekt.setText("Projekt");
         btnProjekt.addActionListener(new java.awt.event.ActionListener() {
@@ -58,13 +56,42 @@ public class Meny extends javax.swing.JFrame {
                 btnProjektActionPerformed(evt);
             }
         });
-        getContentPane().add(btnProjekt, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 110, -1, -1));
 
         btnAnstalldInfo.setText("Anstalldinfo");
-        getContentPane().add(btnAnstalldInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 110, -1, -1));
 
         btnAvdelning.setText("Avdelning");
-        getContentPane().add(btnAvdelning, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 110, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(lblValkommen))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(btnAnstalldInfo)
+                .addGap(28, 28, 28)
+                .addComponent(btnProjekt)
+                .addGap(27, 27, 27)
+                .addComponent(btnAvdelning))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(lblValkommen)
+                .addGap(6, 6, 6)
+                .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAnstalldInfo)
+                    .addComponent(btnProjekt)
+                    .addComponent(btnAvdelning)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -73,10 +100,12 @@ public class Meny extends javax.swing.JFrame {
              String ePost = lblInloggadAnvandare.getText();
             
     String sqlFraga1 = "SELECT aid FROM anstalld WHERE epost = '" + ePost + "'";
-    String sqlFraga2 = "SELECT pid FROM ans_proj WHERE aid = pid";
+    String sqlFraga2 = "SELECT projekt.* FROM projekt INNER JOIN ans_proj ON projekt.PID = ans_proj.PID INNER JOIN anstalld ON ans_proj.AID = anstalld.AID WHERE anstalld.AID = '" + ePost + "'";
     System.out.println(sqlFraga1 + sqlFraga2);
+
     try {
-        String dbProjekt = idb.fetchSingle(sqlFraga2);
+        ArrayList<String> dbProjekt = idb.fetchColumn(sqlFraga2);
+        //String dbProjekt = idb.fetchSingle(sqlFraga2);
         if (dbProjekt != null) { // Kontrollera om ett projekt har hämtats från databasen
            new ProjektNy(idb, ePost, projTab).setVisible(true); // Skapa och visa Projekt-fönstret
         } else {
