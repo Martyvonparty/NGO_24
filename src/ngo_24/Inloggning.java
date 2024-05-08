@@ -13,11 +13,14 @@ import oru.inf.InfException;
 public class Inloggning extends javax.swing.JFrame {
 
     private InfDB idb;
+    private BehorighetsKontrol behorighetsKontrol;
     /**
+     *
      * Creates new form Inloggning
      */
     public Inloggning(InfDB idb) {
         this.idb = idb;
+        this.behorighetsKontrol = new BehorighetsKontrol();
         initComponents();
         lblFelmeddelande.setVisible(false);
     }
@@ -44,7 +47,7 @@ public class Inloggning extends javax.swing.JFrame {
 
         lblPassword.setText("Lösenord");
 
-        tfEpost.setText("maria.g@example.com");
+        tfEpost.setText("michael.j@example.com");
         tfEpost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfEpostActionPerformed(evt);
@@ -61,7 +64,7 @@ public class Inloggning extends javax.swing.JFrame {
         lblFelmeddelande.setForeground(new java.awt.Color(255, 51, 0));
         lblFelmeddelande.setText("Felaktig epost eller lösenord");
 
-        tfPassword.setText("password123");
+        tfPassword.setText("password789");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,15 +112,23 @@ public class Inloggning extends javax.swing.JFrame {
         
         String ePost = tfEpost.getText();
         String losen = tfPassword.getText();
-        
+        // SKRIV KOD SOM KONTROLLERAR VILKET AID SOM EPOSTEN I TEXTFÄLTET ÄR KOPPLAT TILL. AID HÄMTAS FRÅN BEHÖROGHETSKONTROLL 
         try{
             String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
             System.out.println(sqlFraga);
             String dbLosen = idb.fetchSingle(sqlFraga);
+            
             if(losen.equals(dbLosen)){
-                new Meny(idb, ePost).setVisible(true);
-                this.setVisible(false);
+                
+               if (behorighetsKontrol.kollaAID(idb, ePost)){
+                new Handlaggare(idb,ePost).setVisible(true);
+                        this.setVisible(false);
              
+                    }
+               else{
+                   new Admin(idb,ePost).setVisible(true);
+                   this.setVisible(false);
+                           }                            
             }
             else {
               lblFelmeddelande.setVisible(true);
