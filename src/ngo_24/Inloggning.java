@@ -13,11 +13,14 @@ import oru.inf.InfException;
 public class Inloggning extends javax.swing.JFrame {
 
     private InfDB idb;
+    private BehorighetsKontrol behorighetsKontrol;
     /**
+     *
      * Creates new form Inloggning
      */
     public Inloggning(InfDB idb) {
         this.idb = idb;
+        this.behorighetsKontrol = new BehorighetsKontrol();
         initComponents();
         lblFelmeddelande.setVisible(false);
     }
@@ -109,15 +112,24 @@ public class Inloggning extends javax.swing.JFrame {
         
         String ePost = tfEpost.getText();
         String losen = tfPassword.getText();
-        
+        // SKRIV KOD SOM KONTROLLERAR VILKET AID SOM EPOSTEN I TEXTFÄLTET ÄR KOPPLAT TILL. AID HÄMTAS FRÅN BEHÖROGHETSKONTROLL 
         try{
             String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
             System.out.println(sqlFraga);
             String dbLosen = idb.fetchSingle(sqlFraga);
             if(losen.equals(dbLosen)){
-                new Meny(idb, ePost).setVisible(true);
-                this.setVisible(false);
-             
+                
+               if (behorighetsKontrol.kollaAID(idb, ePost)){
+                new Handlaggare(idb,ePost).setVisible(true);
+                        this.setVisible(false);
+                
+                        
+                        
+                    }else{
+                   new Admin(idb,ePost).setVisible(true);
+                   this.setVisible(false);
+                           }                
+                                      
             }
             else {
               lblFelmeddelande.setVisible(true);
