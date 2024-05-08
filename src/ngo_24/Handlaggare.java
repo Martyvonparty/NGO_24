@@ -6,6 +6,9 @@ package ngo_24;
 
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author marti
@@ -21,6 +24,8 @@ private String inloggadAnvandare;
         this.idb = idb;
         this.inloggadAnvandare = inloggadAnvandare;
         initComponents();
+         lblInloggadAnvandare.setText(inloggadAnvandare);
+         //String ePost = lblInloggadAnvandare.getText();
     }
 
     /**
@@ -32,27 +37,120 @@ private String inloggadAnvandare;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblValkommen = new javax.swing.JLabel();
+        lblInloggadAnvandare = new javax.swing.JLabel();
+        lblHandlaggare = new javax.swing.JLabel();
+        tabbedPanel = new javax.swing.JTabbedPane();
+        panelProjekt = new javax.swing.JPanel();
+        btnAndraProjekt = new javax.swing.JToggleButton();
+        panelAvdelning = new javax.swing.JPanel();
+        panelMinInfo = new javax.swing.JPanel();
+        btnAndraMinInfo = new javax.swing.JToggleButton();
+        lblLOGGA = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("HANDLAGGARE ");
+        lblValkommen.setText("Välkommen!");
+
+        lblInloggadAnvandare.setText("inloggadAnvandare");
+
+        lblHandlaggare.setText("Handläggare");
+
+        tabbedPanel.setToolTipText("");
+
+        btnAndraProjekt.setText("Ändra projekt");
+
+        javax.swing.GroupLayout panelProjektLayout = new javax.swing.GroupLayout(panelProjekt);
+        panelProjekt.setLayout(panelProjektLayout);
+        panelProjektLayout.setHorizontalGroup(
+            panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProjektLayout.createSequentialGroup()
+                .addContainerGap(861, Short.MAX_VALUE)
+                .addComponent(btnAndraProjekt)
+                .addGap(44, 44, 44))
+        );
+        panelProjektLayout.setVerticalGroup(
+            panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelProjektLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(btnAndraProjekt)
+                .addContainerGap(562, Short.MAX_VALUE))
+        );
+
+        tabbedPanel.addTab("Projekt", panelProjekt);
+
+        javax.swing.GroupLayout panelAvdelningLayout = new javax.swing.GroupLayout(panelAvdelning);
+        panelAvdelning.setLayout(panelAvdelningLayout);
+        panelAvdelningLayout.setHorizontalGroup(
+            panelAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1007, Short.MAX_VALUE)
+        );
+        panelAvdelningLayout.setVerticalGroup(
+            panelAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        tabbedPanel.addTab("Avdelning", panelAvdelning);
+
+        btnAndraMinInfo.setText("Ändra min info");
+
+        javax.swing.GroupLayout panelMinInfoLayout = new javax.swing.GroupLayout(panelMinInfo);
+        panelMinInfo.setLayout(panelMinInfoLayout);
+        panelMinInfoLayout.setHorizontalGroup(
+            panelMinInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMinInfoLayout.createSequentialGroup()
+                .addContainerGap(826, Short.MAX_VALUE)
+                .addComponent(btnAndraMinInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+        panelMinInfoLayout.setVerticalGroup(
+            panelMinInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMinInfoLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(btnAndraMinInfo)
+                .addContainerGap(562, Short.MAX_VALUE))
+        );
+
+        tabbedPanel.addTab("Min info", panelMinInfo);
+
+        lblLOGGA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ngo_24/SDG+Wheel.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel1)
-                .addContainerGap(427, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tabbedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1007, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblHandlaggare)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblValkommen))
+                        .addGap(623, 623, 623)
+                        .addComponent(lblLOGGA, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jLabel1)
-                .addContainerGap(339, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lblValkommen)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblInloggadAnvandare)
+                            .addComponent(lblHandlaggare)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblLOGGA, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addComponent(tabbedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
@@ -94,6 +192,15 @@ private String inloggadAnvandare;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JToggleButton btnAndraMinInfo;
+    private javax.swing.JToggleButton btnAndraProjekt;
+    private javax.swing.JLabel lblHandlaggare;
+    private javax.swing.JLabel lblInloggadAnvandare;
+    private javax.swing.JLabel lblLOGGA;
+    private javax.swing.JLabel lblValkommen;
+    private javax.swing.JPanel panelAvdelning;
+    private javax.swing.JPanel panelMinInfo;
+    private javax.swing.JPanel panelProjekt;
+    private javax.swing.JTabbedPane tabbedPanel;
     // End of variables declaration//GEN-END:variables
 }

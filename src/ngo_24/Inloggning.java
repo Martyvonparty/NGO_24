@@ -47,7 +47,7 @@ public class Inloggning extends javax.swing.JFrame {
 
         lblPassword.setText("Lösenord");
 
-        tfEpost.setText("michael.j@example.com");
+        tfEpost.setText("maria.g@example.com");
         tfEpost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfEpostActionPerformed(evt);
@@ -64,7 +64,7 @@ public class Inloggning extends javax.swing.JFrame {
         lblFelmeddelande.setForeground(new java.awt.Color(255, 51, 0));
         lblFelmeddelande.setText("Felaktig epost eller lösenord");
 
-        tfPassword.setText("password789");
+        tfPassword.setText("password123");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

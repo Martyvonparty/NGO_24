@@ -34,31 +34,159 @@ private String inloggadAnvandare;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblValkommen = new javax.swing.JLabel();
+        lblAdmin = new javax.swing.JLabel();
+        lblInloggadAnvandare = new javax.swing.JLabel();
+        tabbedPanel = new javax.swing.JTabbedPane();
+        panelAvdelning = new javax.swing.JPanel();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        panelAnstallda = new javax.swing.JPanel();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        panelMinInfo = new javax.swing.JPanel();
+        btnAndraMinInfo = new javax.swing.JToggleButton();
+        jPanel4 = new javax.swing.JPanel();
+        lblLOGGA = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("ADMIN");
+        lblValkommen.setText("Välkommen!");
+
+        lblAdmin.setText("Admin");
+
+        lblInloggadAnvandare.setText("inloggadAnvändare");
+
+        jToggleButton2.setText("Ändra avdelning");
+        jToggleButton2.setPreferredSize(new java.awt.Dimension(130, 25));
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelAvdelningLayout = new javax.swing.GroupLayout(panelAvdelning);
+        panelAvdelning.setLayout(panelAvdelningLayout);
+        panelAvdelningLayout.setHorizontalGroup(
+            panelAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAvdelningLayout.createSequentialGroup()
+                .addContainerGap(819, Short.MAX_VALUE)
+                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelAvdelningLayout.setVerticalGroup(
+            panelAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAvdelningLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(567, Short.MAX_VALUE))
+        );
+
+        tabbedPanel.addTab("Avdelning", panelAvdelning);
+
+        jToggleButton3.setText("Ändra anställda");
+        jToggleButton3.setPreferredSize(new java.awt.Dimension(130, 25));
+
+        javax.swing.GroupLayout panelAnstalldaLayout = new javax.swing.GroupLayout(panelAnstallda);
+        panelAnstallda.setLayout(panelAnstalldaLayout);
+        panelAnstalldaLayout.setHorizontalGroup(
+            panelAnstalldaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAnstalldaLayout.createSequentialGroup()
+                .addContainerGap(819, Short.MAX_VALUE)
+                .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelAnstalldaLayout.setVerticalGroup(
+            panelAnstalldaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAnstalldaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(567, Short.MAX_VALUE))
+        );
+
+        tabbedPanel.addTab("Anställda", panelAnstallda);
+
+        btnAndraMinInfo.setText("Ändra min info");
+        btnAndraMinInfo.setPreferredSize(new java.awt.Dimension(130, 25));
+
+        javax.swing.GroupLayout panelMinInfoLayout = new javax.swing.GroupLayout(panelMinInfo);
+        panelMinInfo.setLayout(panelMinInfoLayout);
+        panelMinInfoLayout.setHorizontalGroup(
+            panelMinInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMinInfoLayout.createSequentialGroup()
+                .addContainerGap(810, Short.MAX_VALUE)
+                .addComponent(btnAndraMinInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelMinInfoLayout.setVerticalGroup(
+            panelMinInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMinInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnAndraMinInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(567, Short.MAX_VALUE))
+        );
+
+        tabbedPanel.addTab("Min info", panelMinInfo);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 955, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 598, Short.MAX_VALUE)
+        );
+
+        tabbedPanel.addTab("tab4", jPanel4);
+
+        lblLOGGA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ngo_24/SDG+Wheel.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabel1)
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tabbedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 955, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblValkommen)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblAdmin)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblInloggadAnvandare)))
+                        .addGap(660, 660, 660)
+                        .addComponent(lblLOGGA, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(27, 27, 27)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jLabel1)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(lblValkommen)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAdmin)
+                            .addComponent(lblInloggadAnvandare))
+                        .addGap(67, 67, 67))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblLOGGA, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(tabbedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -96,6 +224,17 @@ private String inloggadAnvandare;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JToggleButton btnAndraMinInfo;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JLabel lblAdmin;
+    private javax.swing.JLabel lblInloggadAnvandare;
+    private javax.swing.JLabel lblLOGGA;
+    private javax.swing.JLabel lblValkommen;
+    private javax.swing.JPanel panelAnstallda;
+    private javax.swing.JPanel panelAvdelning;
+    private javax.swing.JPanel panelMinInfo;
+    private javax.swing.JTabbedPane tabbedPanel;
     // End of variables declaration//GEN-END:variables
 }
