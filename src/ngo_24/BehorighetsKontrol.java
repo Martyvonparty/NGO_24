@@ -20,33 +20,24 @@ public class BehorighetsKontrol {
    
 }
       
-    public boolean kollaAID (InfDB idb,String ePost){
-        boolean arHandlaggare = false;
-        try{
-        String sqlFragaAID = "SELECT AID from anstallda WHERE epost = '" + ePost + "'";
-        
+    public boolean kollaAID(InfDB idb, String ePost) {
+    try {
+        String sqlFragaAID = "SELECT AID FROM anstalld WHERE ePost = '" + ePost + "'";
         String AID = idb.fetchSingle(sqlFragaAID);
-        
-        String sqlFragaHL = "SELECT AID from anstallda JOIN handlaggare on handlaggare.aid = anstallda.aid";
-       
-        ArrayList <String> listaHandlaggare = new ArrayList();
-     
-        listaHandlaggare = idb.fetchColumn(sqlFragaHL);
-        
-        for(String i : listaHandlaggare){
-            if(i.equals(AID)){
-                
-            arHandlaggare = true;
-            
+
+        String sqlFragaHL = "SELECT AID FROM handlaggare";
+        ArrayList<String> listaHandlaggare = idb.fetchColumn(sqlFragaHL);
+
+        // Kontrollera om AID finns i listan av handläggare
+        for (String handlaggareAID : listaHandlaggare) {
+            if (handlaggareAID.equals(AID)) {
+                return true; // Returnera true om AID tillhör en handläggare
             }
         }
-       }catch(InfException ex){
-        System.out.println("Inget fungerar gör om");
-    } 
-        
-    return arHandlaggare;
-    
-    
+    } catch (InfException ex) {
+        System.out.println("Något gick fel med databasen: " + ex.getMessage());
     }
+    return false; // Om ingen matchning hittades, returnera false
+}
 
 }

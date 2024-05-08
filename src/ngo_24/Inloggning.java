@@ -47,7 +47,7 @@ public class Inloggning extends javax.swing.JFrame {
 
         lblPassword.setText("Lösenord");
 
-        tfEpost.setText("maria.g@example.com");
+        tfEpost.setText("michael.j@example.com");
         tfEpost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfEpostActionPerformed(evt);
@@ -64,7 +64,7 @@ public class Inloggning extends javax.swing.JFrame {
         lblFelmeddelande.setForeground(new java.awt.Color(255, 51, 0));
         lblFelmeddelande.setText("Felaktig epost eller lösenord");
 
-        tfPassword.setText("password123");
+        tfPassword.setText("password789");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,19 +117,18 @@ public class Inloggning extends javax.swing.JFrame {
             String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
             System.out.println(sqlFraga);
             String dbLosen = idb.fetchSingle(sqlFraga);
+            
             if(losen.equals(dbLosen)){
                 
                if (behorighetsKontrol.kollaAID(idb, ePost)){
                 new Handlaggare(idb,ePost).setVisible(true);
                         this.setVisible(false);
-                
-                        
-                        
-                    }else{
+             
+                    }
+               else{
                    new Admin(idb,ePost).setVisible(true);
                    this.setVisible(false);
-                           }                
-                                      
+                           }                            
             }
             else {
               lblFelmeddelande.setVisible(true);
