@@ -9,5 +9,5 @@ package ngo_24;
  * @author marti
  */
 public class BehorighetsKontrol {
-    
+   
 }
