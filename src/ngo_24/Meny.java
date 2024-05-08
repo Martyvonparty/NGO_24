@@ -107,7 +107,7 @@ public class Meny extends javax.swing.JFrame {
         ArrayList<String> dbProjekt = idb.fetchColumn(sqlFraga2);
         //String dbProjekt = idb.fetchSingle(sqlFraga2);
         if (dbProjekt != null) { // Kontrollera om ett projekt har hämtats från databasen
-           new ProjektNy(idb, ePost, projTab).setVisible(true); // Skapa och visa Projekt-fönstret
+           //new ProjektNy(idb, ePost, projTab).setVisible(true); // Skapa och visa Projekt-fönstret
         } else {
             System.out.println("Inga projekt hittades för användaren."); // Meddelande om inga projekt hittades
         }
