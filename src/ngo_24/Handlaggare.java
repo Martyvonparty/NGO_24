@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -19,14 +20,34 @@ private String inloggadAnvandare;
     
     /**
      * Creates new form Handlaggare
+     * @param idb
      */
-    public Handlaggare(InfDB idb,String inloggadAnvandare){
+    public Handlaggare(InfDB idb, String inloggadAnvandare){
         this.idb = idb;
         this.inloggadAnvandare = inloggadAnvandare;
         initComponents();
          lblInloggadAnvandare.setText(inloggadAnvandare);
-         //String ePost = lblInloggadAnvandare.getText();
+         btnAndraProjekt.setVisible(false);
+}
+         
+    public Handlaggare (InfDB idb, String inloggadAnvandare, boolean isProjektChef){
+        this.idb = idb;
+        this.inloggadAnvandare = inloggadAnvandare;
+      
+        initComponents();
+        lblInloggadAnvandare.setText(inloggadAnvandare);
+         if (isProjektChef) {
+            btnAndraProjekt.setVisible(true);
+        } else {
+            btnAndraProjekt.setVisible(false);
+        }
     }
+
+
+    
+        
+         //String ePost = lblInloggadAnvandare.getText();
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,6 +80,11 @@ private String inloggadAnvandare;
         tabbedPanel.setToolTipText("");
 
         btnAndraProjekt.setText("Ändra projekt");
+        btnAndraProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraProjektActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelProjektLayout = new javax.swing.GroupLayout(panelProjekt);
         panelProjekt.setLayout(panelProjektLayout);
@@ -155,6 +181,12 @@ private String inloggadAnvandare;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    
+    private void btnAndraProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraProjektActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAndraProjektActionPerformed
 
     /**
      * @param args the command line arguments

@@ -119,13 +119,19 @@ public class Inloggning extends javax.swing.JFrame {
             String dbLosen = idb.fetchSingle(sqlFraga);
             
             if(losen.equals(dbLosen)){
-                
-               if (behorighetsKontrol.kollaAID(idb, ePost)){
-                new Handlaggare(idb,ePost).setVisible(true);
+                boolean isProjektChef = behorighetsKontrol.kollaProjektChef(idb, ePost);
+                         
+             if (isProjektChef){
+                 new Handlaggare(idb, ePost,true).setVisible(true);
+                 this.setVisible(false);
+                 
+             }  
+             else if (behorighetsKontrol.kollaHandlaggare(idb, ePost)){
+                new Handlaggare(idb, ePost).setVisible(true);
                         this.setVisible(false);
-             
-                    }
-               else{
+             }
+                    
+             else {
                    new Admin(idb,ePost).setVisible(true);
                    this.setVisible(false);
                            }                            
@@ -133,7 +139,8 @@ public class Inloggning extends javax.swing.JFrame {
             else {
               lblFelmeddelande.setVisible(true);
             }
-        } catch(InfException ex){
+        } 
+catch(InfException ex){
             System.out.println(ex.getMessage());
         
         }

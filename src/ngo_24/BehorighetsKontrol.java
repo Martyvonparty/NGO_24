@@ -20,7 +20,7 @@ public class BehorighetsKontrol {
    
 }
       
-    public boolean kollaAID(InfDB idb, String ePost) {
+    public boolean kollaHandlaggare(InfDB idb, String ePost) {
     try {
         String sqlFragaAID = "SELECT AID FROM anstalld WHERE ePost = '" + ePost + "'";
         String AID = idb.fetchSingle(sqlFragaAID);
@@ -40,4 +40,22 @@ public class BehorighetsKontrol {
     return false; // Om ingen matchning hittades, returnera false
 }
 
+  public boolean kollaProjektChef(InfDB idb, String ePost) {
+    boolean isProjektChef = false;
+    try {
+        String sqlFragaAID = "SELECT AID FROM anstalld WHERE ePost = '" + ePost + "'";
+        String AID = idb.fetchSingle(sqlFragaAID);
+
+        String sqlFragaProjChef = "SELECT projekt.projektchef FROM projekt INNER JOIN anstalld ON projekt.projektchef = anstalld.AID WHERE ePost = '" + ePost + "'";
+        String projektChefAID = idb.fetchSingle(sqlFragaProjChef);
+
+        // Kontrollera om AID överensstämmer med projektchefens AID
+        if (projektChefAID != null && projektChefAID.equals(AID)) {
+            isProjektChef = true;
+        }
+    } catch (InfException ex) {
+        System.out.println("Något gick fel med databasen: " + ex.getMessage());
+    }
+    return isProjektChef;
 }
+}//"SELECT projekt.projektchef, anstalld.* FROM projekt INNER JOIN anstalld ON projekt.projektchef = anstalld.AID where ePost == '" + ePost + "'";
