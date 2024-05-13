@@ -5,6 +5,7 @@
  */
 package ngo_24;
 
+import java.awt.Component;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.time.LocalDateTime;
@@ -12,9 +13,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,7 +30,6 @@ import javax.swing.table.DefaultTableModel;
 public class Handlaggare extends javax.swing.JFrame {
 private InfDB idb;
 private String ePost;
-    
     /**
      * Creates new form Handlaggare
      * @param idb
@@ -34,14 +39,14 @@ private String ePost;
         this.ePost = ePost;
         initComponents();
          lblInloggadAnvandare.setText(ePost);
+         
          btnAndraProjekt.setVisible(false);
          
 }
          
     public Handlaggare (InfDB idb, String ePost, boolean isProjektChef){
         this.idb = idb;
-        this.ePost = ePost;
-      
+        this.ePost = ePost;      
         initComponents();
         lblInloggadAnvandare.setText(ePost);
          if (isProjektChef) {
@@ -68,12 +73,19 @@ private String ePost;
         lblInloggadAnvandare = new javax.swing.JLabel();
         lblHandlaggare = new javax.swing.JLabel();
         lblLOGGA = new javax.swing.JLabel();
-        btnAllaProjekt = new javax.swing.JToggleButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtArea = new javax.swing.JTextArea();
+        tabby = new javax.swing.JTabbedPane();
+        panelProjekt = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtAreaProjekt = new javax.swing.JTextArea();
         btnAndraProjekt = new javax.swing.JToggleButton();
-        btnMinAvdelning = new javax.swing.JToggleButton();
-        btnMinInfo = new javax.swing.JToggleButton();
+        panelAvdelning = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtAreaAvdelning = new javax.swing.JTextArea();
+        panelMinInfo = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtAreaMinInfo = new javax.swing.JTextArea();
         btnAndraMinInfo = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,39 +98,145 @@ private String ePost;
 
         lblLOGGA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ngo_24/SDG+Wheel.png"))); // NOI18N
 
-        btnAllaProjekt.setText("Mina projekt");
-        btnAllaProjekt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAllaProjektActionPerformed(evt);
+        tabby.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tabbyStateChanged(evt);
             }
         });
 
-        txtArea.setColumns(20);
-        txtArea.setRows(5);
-        jScrollPane1.setViewportView(txtArea);
+        txtAreaProjekt.setEditable(false);
+        txtAreaProjekt.setColumns(20);
+        txtAreaProjekt.setRows(5);
+        jScrollPane2.setViewportView(txtAreaProjekt);
+        txtAreaProjekt.getAccessibleContext().setAccessibleParent(panelProjekt);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         btnAndraProjekt.setText("Ändra projekt");
 
-        btnMinAvdelning.setText("Min avdelning");
-        btnMinAvdelning.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMinAvdelningActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout panelProjektLayout = new javax.swing.GroupLayout(panelProjekt);
+        panelProjekt.setLayout(panelProjektLayout);
+        panelProjektLayout.setHorizontalGroup(
+            panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelProjektLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(354, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProjektLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAndraProjekt)
+                .addContainerGap())
+        );
+        panelProjektLayout.setVerticalGroup(
+            panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProjektLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(btnAndraProjekt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
-        btnMinInfo.setText("Min profil");
-        btnMinInfo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMinInfoActionPerformed(evt);
-            }
-        });
+        tabby.addTab("Mina projekt", panelProjekt);
+
+        txtAreaAvdelning.setEditable(false);
+        txtAreaAvdelning.setColumns(20);
+        txtAreaAvdelning.setRows(5);
+        jScrollPane3.setViewportView(txtAreaAvdelning);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 89, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout panelAvdelningLayout = new javax.swing.GroupLayout(panelAvdelning);
+        panelAvdelning.setLayout(panelAvdelningLayout);
+        panelAvdelningLayout.setHorizontalGroup(
+            panelAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAvdelningLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panelAvdelningLayout.setVerticalGroup(
+            panelAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAvdelningLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        tabby.addTab("Min avdelning", panelAvdelning);
+
+        txtAreaMinInfo.setEditable(false);
+        txtAreaMinInfo.setColumns(20);
+        txtAreaMinInfo.setRows(5);
+        jScrollPane4.setViewportView(txtAreaMinInfo);
 
         btnAndraMinInfo.setText("Ändra min info");
+        btnAndraMinInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraMinInfoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelMinInfoLayout = new javax.swing.GroupLayout(panelMinInfo);
+        panelMinInfo.setLayout(panelMinInfoLayout);
+        panelMinInfoLayout.setHorizontalGroup(
+            panelMinInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMinInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1062, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(158, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMinInfoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAndraMinInfo)
+                .addGap(14, 14, 14))
+        );
+        panelMinInfoLayout.setVerticalGroup(
+            panelMinInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMinInfoLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(btnAndraMinInfo)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE))
+        );
+
+        tabby.addTab("Min  profil", panelMinInfo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(tabby)
+                .addGap(66, 66, 66))
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,91 +245,87 @@ private String ePost;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblValkommen))
-                .addGap(623, 623, 623)
-                .addComponent(lblLOGGA, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                .addContainerGap(117, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAllaProjekt)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnMinAvdelning)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnMinInfo)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAndraMinInfo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAndraProjekt)
-                .addGap(47, 47, 47))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblLOGGA, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLOGGA, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
                         .addComponent(lblValkommen)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblInloggadAnvandare)
-                            .addComponent(lblHandlaggare)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLOGGA, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAllaProjekt)
-                    .addComponent(btnMinAvdelning)
-                    .addComponent(btnMinInfo))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAndraProjekt)
-                    .addComponent(btnAndraMinInfo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                            .addComponent(lblHandlaggare))))
+                .addGap(33, 33, 33)
+                .addComponent(tabby)
+                .addGap(94, 94, 94))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllaProjektActionPerformed
-        txtArea.setVisible(true);
-        txtArea.setText("");
-        ArrayList<HashMap<String,String>> allaProjekt;
+    private void tabbyStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbyStateChanged
+        int index = tabby.getSelectedIndex();
+    switch(index) {
+        case 0:
+            visaProjektInformation();
+            break;
+        case 1:
+            visaAvdelningsInformation();
+            break;
+        case 2:
+            visaProfilInformation();
+            break;
+        // Lägg till fler fall för fler flikar om det behövs
+    }
+    }//GEN-LAST:event_tabbyStateChanged
 
-        try{
+    private void btnAndraMinInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraMinInfoActionPerformed
+        
+        Anstalld anstalldFrame = new Anstalld(this);
+        anstalldFrame.visaAnvandarensInfo(); // Fyll i textfälten med användarens information
+        anstalldFrame.setVisible(true);
+
+    }//GEN-LAST:event_btnAndraMinInfoActionPerformed
+public void uppdateraAnvandarensInfo(String namn, String efternamn,String adress, String epost, String telefon){
+    
+        // Implementera koden för att uppdatera användarens information i databasen
+    }
+   
+public void visaProjektInformation(){
+
+try{
+            txtAreaProjekt.setText("");
+            ArrayList<HashMap<String,String>> allaProjekt;
             String sqlFraga = "SELECT * FROM projekt INNER JOIN anstalld ON projekt.projektchef = anstalld.AID WHERE ePost = '" + ePost + "'";
 
             allaProjekt = idb.fetchRows(sqlFraga);
 
             for(HashMap<String,String> projekt : allaProjekt){
-                txtArea.append(projekt.get("pid") + "\t");
-                txtArea.append(projekt.get("projektnamn") + "\t");
-                txtArea.append(projekt.get("beskrivning") + "\t");
-                txtArea.append(projekt.get("startdatum") + "\t");
-                txtArea.append(projekt.get("slutdatum") + "\t");
-                txtArea.append(projekt.get("kostnad") + "\t");
-                txtArea.append(projekt.get("status") + "\t");
-                txtArea.append(projekt.get("prioritet") + "\t");
-                txtArea.append(projekt.get("projektchef") + "\t");
-                txtArea.append(projekt.get("land") + "\t");
+                txtAreaProjekt.append(projekt.get("pid") + "\t");
+                txtAreaProjekt.append(projekt.get("projektnamn") + "\t");
+                txtAreaProjekt.append(projekt.get("beskrivning") + "\t");
+                txtAreaProjekt.append(projekt.get("startdatum") + "\t");
+                txtAreaProjekt.append(projekt.get("slutdatum") + "\t");
+                txtAreaProjekt.append(projekt.get("kostnad") + "\t");
+                txtAreaProjekt.append(projekt.get("status") + "\t");
+                txtAreaProjekt.append(projekt.get("prioritet") + "\t");
+                txtAreaProjekt.append(projekt.get("projektchef") + "\t");
+                txtAreaProjekt.append(projekt.get("land") + "\t");
             }
 
         }catch(InfException ex){
             System.out.println(ex.getMessage());
 
-        }
-
-    }//GEN-LAST:event_btnAllaProjektActionPerformed
-
-    private void btnMinAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinAvdelningActionPerformed
-        
-        txtArea.setText("");
+        }   
+}
+public void visaAvdelningsInformation (){
+        txtAreaAvdelning.setText("");
 
         ArrayList<HashMap<String,String>> allaAvdelning;
 
@@ -220,49 +334,45 @@ private String ePost;
             allaAvdelning = idb.fetchRows(sqlAvdelning);
 
             for(HashMap<String,String> avdelning : allaAvdelning ){
-                txtArea.append(avdelning.get("avdid") + "\t");
-                txtArea.append(avdelning.get("namn") + "\t");
-                txtArea.append(avdelning.get("beskrivning") + "\t");
-                txtArea.append(avdelning.get("adress") + "\t");
-                txtArea.append(avdelning.get("epost") + "\t");
-                txtArea.append(avdelning.get("telefon") + "\t");
-                txtArea.append(avdelning.get("stad") + "\t");
-                txtArea.append(avdelning.get("chef") + "\t");
+                txtAreaAvdelning.append(avdelning.get("avdid") + "\t");
+                txtAreaAvdelning.append(avdelning.get("namn") + "\t");
+                txtAreaAvdelning.append(avdelning.get("beskrivning") + "\t");
+                txtAreaAvdelning.append(avdelning.get("adress") + "\t");
+                txtAreaAvdelning.append(avdelning.get("epost") + "\t");
+                txtAreaAvdelning.append(avdelning.get("telefon") + "\t");
+                txtAreaAvdelning.append(avdelning.get("stad") + "\t");
+                txtAreaAvdelning.append(avdelning.get("chef") + "\t");
 
             }
         }catch(InfException ex){
             System.out.println(ex.getMessage());
 
         }
+}
+public void visaProfilInformation(){
+    txtAreaMinInfo.setText("");
+    HashMap<String,String> anstalldInfo;
 
-    }//GEN-LAST:event_btnMinAvdelningActionPerformed
+    try{
+        String sqlProfilInfo = "SELECT * from anstalld WHERE ePost = '" + ePost + "'";
+        anstalldInfo = idb.fetchRow(sqlProfilInfo);
 
-    private void btnMinInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinInfoActionPerformed
-        txtArea.setText("");
+    if(anstalldInfo !=null){
+        txtAreaMinInfo.append(anstalldInfo.get("aid") + "\t");
+        txtAreaMinInfo.append(anstalldInfo.get("fornamn") + "\t");
+        txtAreaMinInfo.append(anstalldInfo.get("efternamn") + "\t");
+        txtAreaMinInfo.append(anstalldInfo.get("adress") + "\t");
+        txtAreaMinInfo.append(anstalldInfo.get("epost") + "\t");
+        txtAreaMinInfo.append(anstalldInfo.get("telefon") + "\t");
+        txtAreaMinInfo.append(anstalldInfo.get("anstallningsdatum") + "\t");
+        txtAreaMinInfo.append(anstalldInfo.get("avdelning") + "\t");
 
-        ArrayList<HashMap<String,String>> allaAnstalld;
-
-        try {
-            String sqlAnstalld = "SELECT * FROM anstalld WHERE anstalld.ePost = '" + ePost +"'";
-            allaAnstalld = idb.fetchRows(sqlAnstalld);
-
-            for(HashMap<String,String> anstalld : allaAnstalld ){
-                txtArea.append(anstalld.get("aid") + "\t");
-                txtArea.append(anstalld.get("fornamn") + "\t");
-                txtArea.append(anstalld.get("efternamn") + "\t");
-                 txtArea.append(anstalld.get("adress") + "\t");
-                txtArea.append(anstalld.get("epost") + "\t");
-                txtArea.append(anstalld.get("telefon") + "\t");
-                txtArea.append(anstalld.get("anstallningsdatum") + "\t");
-                txtArea.append(anstalld.get("avdelning") + "\t");
-
-            }
+}
         }catch(InfException ex){
             System.out.println(ex.getMessage());
 
         }
-    }//GEN-LAST:event_btnMinInfoActionPerformed
-
+}
    
     
     /**
@@ -301,16 +411,23 @@ private String ePost;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnAllaProjekt;
     private javax.swing.JToggleButton btnAndraMinInfo;
     private javax.swing.JToggleButton btnAndraProjekt;
-    private javax.swing.JToggleButton btnMinAvdelning;
-    private javax.swing.JToggleButton btnMinInfo;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblHandlaggare;
     private javax.swing.JLabel lblInloggadAnvandare;
     private javax.swing.JLabel lblLOGGA;
     private javax.swing.JLabel lblValkommen;
-    private javax.swing.JTextArea txtArea;
+    private javax.swing.JPanel panelAvdelning;
+    private javax.swing.JPanel panelMinInfo;
+    private javax.swing.JPanel panelProjekt;
+    private javax.swing.JTabbedPane tabby;
+    private javax.swing.JTextArea txtAreaAvdelning;
+    private javax.swing.JTextArea txtAreaMinInfo;
+    private javax.swing.JTextArea txtAreaProjekt;
     // End of variables declaration//GEN-END:variables
 }
