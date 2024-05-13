@@ -44,7 +44,6 @@ private String ePost;
       
         initComponents();
         lblInloggadAnvandare.setText(ePost);
-        panelProjekt.setVisible(true);
          if (isProjektChef) {
             btnAndraProjekt.setVisible(true);
         } else {
@@ -69,11 +68,13 @@ private String ePost;
         lblInloggadAnvandare = new javax.swing.JLabel();
         lblHandlaggare = new javax.swing.JLabel();
         lblLOGGA = new javax.swing.JLabel();
-        TabbedPane = new javax.swing.JTabbedPane();
-        panelProjekt = new javax.swing.JPanel();
-        btnAndraProjekt = new javax.swing.JToggleButton();
+        btnAllaProjekt = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtAreaProjekt = new javax.swing.JTextArea();
+        txtArea = new javax.swing.JTextArea();
+        btnAndraProjekt = new javax.swing.JToggleButton();
+        btnMinAvdelning = new javax.swing.JToggleButton();
+        btnMinInfo = new javax.swing.JToggleButton();
+        btnAndraMinInfo = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,48 +86,34 @@ private String ePost;
 
         lblLOGGA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ngo_24/SDG+Wheel.png"))); // NOI18N
 
-        TabbedPane.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabbedPaneMouseClicked(evt);
+        btnAllaProjekt.setText("Mina projekt");
+        btnAllaProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllaProjektActionPerformed(evt);
             }
         });
-        TabbedPane.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                TabbedPaneComponentShown(evt);
-            }
-        });
+
+        txtArea.setColumns(20);
+        txtArea.setRows(5);
+        jScrollPane1.setViewportView(txtArea);
 
         btnAndraProjekt.setText("Ändra projekt");
 
-        txtAreaProjekt.setEditable(false);
-        txtAreaProjekt.setColumns(20);
-        txtAreaProjekt.setRows(5);
-        jScrollPane1.setViewportView(txtAreaProjekt);
+        btnMinAvdelning.setText("Min avdelning");
+        btnMinAvdelning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinAvdelningActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout panelProjektLayout = new javax.swing.GroupLayout(panelProjekt);
-        panelProjekt.setLayout(panelProjektLayout);
-        panelProjektLayout.setHorizontalGroup(
-            panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProjektLayout.createSequentialGroup()
-                .addContainerGap(759, Short.MAX_VALUE)
-                .addComponent(btnAndraProjekt)
-                .addGap(47, 47, 47))
-            .addGroup(panelProjektLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelProjektLayout.setVerticalGroup(
-            panelProjektLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProjektLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnAndraProjekt)
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
+        btnMinInfo.setText("Min profil");
+        btnMinInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinInfoActionPerformed(evt);
+            }
+        });
 
-        TabbedPane.addTab("tab1", panelProjekt);
+        btnAndraMinInfo.setText("Ändra min info");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,12 +128,25 @@ private String ePost;
                         .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblValkommen))
                 .addGap(623, 623, 623)
-                .addComponent(lblLOGGA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addComponent(lblLOGGA, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addContainerGap(117, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(TabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 908, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAllaProjekt)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnMinAvdelning)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMinInfo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAndraMinInfo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAndraProjekt)
+                .addGap(47, 47, 47))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,71 +162,106 @@ private String ePost;
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblLOGGA, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(67, 67, 67)
-                .addComponent(TabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAllaProjekt)
+                    .addComponent(btnMinAvdelning)
+                    .addComponent(btnMinInfo))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAndraProjekt)
+                    .addComponent(btnAndraMinInfo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TabbedPaneComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_TabbedPaneComponentShown
-        panelProjekt.setVisible(true);
-        txtAreaProjekt.setText("");
+    private void btnAllaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllaProjektActionPerformed
+        txtArea.setVisible(true);
+        txtArea.setText("");
         ArrayList<HashMap<String,String>> allaProjekt;
-        
-        try{
-            String sqlFraga = "SELECT * FROM projekt INNER JOIN anstalld ON projekt.projektchef = anstalld.AID WHERE ePost = '" + ePost + "'";
-            
-            allaProjekt = idb.fetchRows(sqlFraga);
-            
-            for(HashMap<String,String> projekt : allaProjekt){
-                txtAreaProjekt.append(projekt.get("pid") + "\t");
-                txtAreaProjekt.append(projekt.get("projektnamn") + "\t");
-                txtAreaProjekt.append(projekt.get("beskrivning") + "\t");
-                txtAreaProjekt.append(projekt.get("startdatum") + "\t");
-                txtAreaProjekt.append(projekt.get("slutdatum") + "\t");
-                txtAreaProjekt.append(projekt.get("kostnad") + "\t");
-                txtAreaProjekt.append(projekt.get("status") + "\t");
-                txtAreaProjekt.append(projekt.get("prioritet") + "\t");
-                txtAreaProjekt.append(projekt.get("projektchef") + "\t");
-                txtAreaProjekt.append(projekt.get("land") + "\t");
-            }
-            
-        }catch(InfException ex){
-            System.out.println(ex.getMessage());
-        
-        }
-    }//GEN-LAST:event_TabbedPaneComponentShown
 
-    private void TabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabbedPaneMouseClicked
-           panelProjekt.setVisible(true);
-        txtAreaProjekt.setText("");
-        ArrayList<HashMap<String,String>> allaProjekt;
-        
         try{
             String sqlFraga = "SELECT * FROM projekt INNER JOIN anstalld ON projekt.projektchef = anstalld.AID WHERE ePost = '" + ePost + "'";
-            
+
             allaProjekt = idb.fetchRows(sqlFraga);
-            
+
             for(HashMap<String,String> projekt : allaProjekt){
-                txtAreaProjekt.append(projekt.get("pid") + "\t");
-                txtAreaProjekt.append(projekt.get("projektnamn") + "\t");
-                txtAreaProjekt.append(projekt.get("beskrivning") + "\t");
-                txtAreaProjekt.append(projekt.get("startdatum") + "\t");
-                txtAreaProjekt.append(projekt.get("slutdatum") + "\t");
-                txtAreaProjekt.append(projekt.get("kostnad") + "\t");
-                txtAreaProjekt.append(projekt.get("status") + "\t");
-                txtAreaProjekt.append(projekt.get("prioritet") + "\t");
-                txtAreaProjekt.append(projekt.get("projektchef") + "\t");
-                txtAreaProjekt.append(projekt.get("land") + "\t");
+                txtArea.append(projekt.get("pid") + "\t");
+                txtArea.append(projekt.get("projektnamn") + "\t");
+                txtArea.append(projekt.get("beskrivning") + "\t");
+                txtArea.append(projekt.get("startdatum") + "\t");
+                txtArea.append(projekt.get("slutdatum") + "\t");
+                txtArea.append(projekt.get("kostnad") + "\t");
+                txtArea.append(projekt.get("status") + "\t");
+                txtArea.append(projekt.get("prioritet") + "\t");
+                txtArea.append(projekt.get("projektchef") + "\t");
+                txtArea.append(projekt.get("land") + "\t");
             }
-            
+
         }catch(InfException ex){
             System.out.println(ex.getMessage());
-        
+
         }
-    }//GEN-LAST:event_TabbedPaneMouseClicked
+
+    }//GEN-LAST:event_btnAllaProjektActionPerformed
+
+    private void btnMinAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinAvdelningActionPerformed
+        
+        txtArea.setText("");
+
+        ArrayList<HashMap<String,String>> allaAvdelning;
+
+        try {
+            String sqlAvdelning = "SELECT * FROM avdelning INNER JOIN anstalld ON avdelning.avdid = anstalld.avdelning WHERE anstalld.ePost = '" + ePost +"'";
+            allaAvdelning = idb.fetchRows(sqlAvdelning);
+
+            for(HashMap<String,String> avdelning : allaAvdelning ){
+                txtArea.append(avdelning.get("avdid") + "\t");
+                txtArea.append(avdelning.get("namn") + "\t");
+                txtArea.append(avdelning.get("beskrivning") + "\t");
+                txtArea.append(avdelning.get("adress") + "\t");
+                txtArea.append(avdelning.get("epost") + "\t");
+                txtArea.append(avdelning.get("telefon") + "\t");
+                txtArea.append(avdelning.get("stad") + "\t");
+                txtArea.append(avdelning.get("chef") + "\t");
+
+            }
+        }catch(InfException ex){
+            System.out.println(ex.getMessage());
+
+        }
+
+    }//GEN-LAST:event_btnMinAvdelningActionPerformed
+
+    private void btnMinInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinInfoActionPerformed
+        txtArea.setText("");
+
+        ArrayList<HashMap<String,String>> allaAnstalld;
+
+        try {
+            String sqlAnstalld = "SELECT * FROM anstalld WHERE anstalld.ePost = '" + ePost +"'";
+            allaAnstalld = idb.fetchRows(sqlAnstalld);
+
+            for(HashMap<String,String> anstalld : allaAnstalld ){
+                txtArea.append(anstalld.get("aid") + "\t");
+                txtArea.append(anstalld.get("fornamn") + "\t");
+                txtArea.append(anstalld.get("efternamn") + "\t");
+                 txtArea.append(anstalld.get("adress") + "\t");
+                txtArea.append(anstalld.get("epost") + "\t");
+                txtArea.append(anstalld.get("telefon") + "\t");
+                txtArea.append(anstalld.get("anstallningsdatum") + "\t");
+                txtArea.append(anstalld.get("avdelning") + "\t");
+
+            }
+        }catch(InfException ex){
+            System.out.println(ex.getMessage());
+
+        }
+    }//GEN-LAST:event_btnMinInfoActionPerformed
 
    
     
@@ -266,14 +301,16 @@ private String ePost;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane TabbedPane;
+    private javax.swing.JToggleButton btnAllaProjekt;
+    private javax.swing.JToggleButton btnAndraMinInfo;
     private javax.swing.JToggleButton btnAndraProjekt;
+    private javax.swing.JToggleButton btnMinAvdelning;
+    private javax.swing.JToggleButton btnMinInfo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHandlaggare;
     private javax.swing.JLabel lblInloggadAnvandare;
     private javax.swing.JLabel lblLOGGA;
     private javax.swing.JLabel lblValkommen;
-    private javax.swing.JPanel panelProjekt;
-    private javax.swing.JTextArea txtAreaProjekt;
+    private javax.swing.JTextArea txtArea;
     // End of variables declaration//GEN-END:variables
 }
