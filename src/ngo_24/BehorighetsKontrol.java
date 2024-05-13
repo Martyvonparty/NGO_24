@@ -20,7 +20,7 @@ public class BehorighetsKontrol {
    
 }
       
-    public boolean kollaHandlaggare(InfDB idb, String ePost) {
+    public boolean kollaHandlaggare(InfDB idb, String ePost) {//Metod som kontrollerar om anställd är handläggare
     try {
         String sqlFragaAID = "SELECT AID FROM anstalld WHERE ePost = '" + ePost + "'";
         String AID = idb.fetchSingle(sqlFragaAID);
@@ -35,12 +35,12 @@ public class BehorighetsKontrol {
             }
         }
     } catch (InfException ex) {
-        System.out.println("Något gick fel med databasen: " + ex.getMessage());
+        System.out.println("Något gick fel under behörighetskontrollen.[HL] " + ex.getMessage());
     }
     return false; // Om ingen matchning hittades, returnera false
 }
 
-  public boolean kollaProjektChef(InfDB idb, String ePost) {
+  public boolean kollaProjektChef(InfDB idb, String ePost) {///Metod som kontrollerar om anställd är projektchef
     boolean isProjektChef = false;
     try {
         String sqlFragaAID = "SELECT AID FROM anstalld WHERE ePost = '" + ePost + "'";
@@ -54,7 +54,7 @@ public class BehorighetsKontrol {
             isProjektChef = true;
         }
     } catch (InfException ex) {
-        System.out.println("Något gick fel med databasen: " + ex.getMessage());
+        System.out.println("Något gick fel under behörighetskontrollen.[PC] " + ex.getMessage());
     }
     return isProjektChef;
 }
