@@ -40,19 +40,22 @@ private String ePost;
         lblValkommen = new javax.swing.JLabel();
         lblAdmin = new javax.swing.JLabel();
         lblInloggadAnvandare = new javax.swing.JLabel();
-        tabbedPanel = new javax.swing.JTabbedPane();
+        lblLOGGA = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         panelAvdelning = new javax.swing.JPanel();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        panelAnstallda = new javax.swing.JPanel();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        btbLaggTilAvdelning = new javax.swing.JToggleButton();
+        btnAndraAvdelning = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAreaAvdelning = new javax.swing.JTextArea();
-        panelMinInfo = new javax.swing.JPanel();
-        btnAndraMinInfo = new javax.swing.JToggleButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaProjekt = new javax.swing.JTextArea();
+        btnLandInfo = new javax.swing.JToggleButton();
+        jToggleButton5 = new javax.swing.JToggleButton();
         jPanel4 = new javax.swing.JPanel();
-        lblLOGGA = new javax.swing.JLabel();
+        btnAndraMinInfo = new javax.swing.JToggleButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtAreaMinInfo = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,167 +65,151 @@ private String ePost;
 
         lblInloggadAnvandare.setText("inloggadAnvändare");
 
-        jToggleButton2.setText("Ändra avdelning");
-        jToggleButton2.setPreferredSize(new java.awt.Dimension(130, 25));
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        lblLOGGA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ngo_24/SDG+Wheel.png"))); // NOI18N
+
+        btbLaggTilAvdelning.setText("Lägg til avdelning");
+        btbLaggTilAvdelning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                btbLaggTilAvdelningActionPerformed(evt);
             }
         });
+
+        btnAndraAvdelning.setText("Ändra avdelning");
+        btnAndraAvdelning.setPreferredSize(new java.awt.Dimension(130, 25));
+        btnAndraAvdelning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraAvdelningActionPerformed(evt);
+            }
+        });
+
+        txtAreaAvdelning.setColumns(20);
+        txtAreaAvdelning.setRows(5);
+        jScrollPane2.setViewportView(txtAreaAvdelning);
 
         javax.swing.GroupLayout panelAvdelningLayout = new javax.swing.GroupLayout(panelAvdelning);
         panelAvdelning.setLayout(panelAvdelningLayout);
         panelAvdelningLayout.setHorizontalGroup(
             panelAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAvdelningLayout.createSequentialGroup()
-                .addContainerGap(819, Short.MAX_VALUE)
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(panelAvdelningLayout.createSequentialGroup()
+                .addGroup(panelAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAvdelningLayout.createSequentialGroup()
+                        .addGap(0, 610, Short.MAX_VALUE)
+                        .addComponent(btbLaggTilAvdelning)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAndraAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         panelAvdelningLayout.setVerticalGroup(
             panelAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAvdelningLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(567, Short.MAX_VALUE))
-        );
-
-        tabbedPanel.addTab("Avdelning", panelAvdelning);
-
-        panelAnstallda.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                panelAnstalldaFocusGained(evt);
-            }
-        });
-
-        jToggleButton3.setText("Ändra anställda");
-        jToggleButton3.setPreferredSize(new java.awt.Dimension(130, 25));
-
-        txtAreaAvdelning.setColumns(20);
-        txtAreaAvdelning.setRows(5);
-        txtAreaAvdelning.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtAreaAvdelningFocusGained(evt);
-            }
-        });
-        jScrollPane2.setViewportView(txtAreaAvdelning);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAndraAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btbLaggTilAvdelning))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout panelAnstalldaLayout = new javax.swing.GroupLayout(panelAnstallda);
-        panelAnstallda.setLayout(panelAnstalldaLayout);
-        panelAnstalldaLayout.setHorizontalGroup(
-            panelAnstalldaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAnstalldaLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jTabbedPane1.addTab("Avdelning", panelAvdelning);
+
+        txtAreaProjekt.setColumns(20);
+        txtAreaProjekt.setRows(5);
+        jScrollPane1.setViewportView(txtAreaProjekt);
+
+        btnLandInfo.setText("Land-info");
+        btnLandInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLandInfoActionPerformed(evt);
+            }
+        });
+
+        jToggleButton5.setText("Partner-info");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jToggleButton5)
+                .addGap(18, 18, 18)
+                .addComponent(btnLandInfo)
                 .addContainerGap())
         );
-        panelAnstalldaLayout.setVerticalGroup(
-            panelAnstalldaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAnstalldaLayout.createSequentialGroup()
-                .addGroup(panelAnstalldaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAnstalldaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelAnstalldaLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-
-        tabbedPanel.addTab("Anställda", panelAnstallda);
-
-        btnAndraMinInfo.setText("Ändra min info");
-        btnAndraMinInfo.setPreferredSize(new java.awt.Dimension(130, 25));
-
-        javax.swing.GroupLayout panelMinInfoLayout = new javax.swing.GroupLayout(panelMinInfo);
-        panelMinInfo.setLayout(panelMinInfoLayout);
-        panelMinInfoLayout.setHorizontalGroup(
-            panelMinInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMinInfoLayout.createSequentialGroup()
-                .addContainerGap(810, Short.MAX_VALUE)
-                .addComponent(btnAndraMinInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        panelMinInfoLayout.setVerticalGroup(
-            panelMinInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMinInfoLayout.createSequentialGroup()
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnAndraMinInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(567, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLandInfo)
+                    .addComponent(jToggleButton5))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tabbedPanel.addTab("Min info", panelMinInfo);
+        jTabbedPane1.addTab("Våra projekt", jPanel3);
+
+        btnAndraMinInfo.setText("Ändra profil");
+        btnAndraMinInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraMinInfoActionPerformed(evt);
+            }
+        });
+
+        txtAreaMinInfo.setColumns(20);
+        txtAreaMinInfo.setRows(5);
+        jScrollPane3.setViewportView(txtAreaMinInfo);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 955, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAndraMinInfo)
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnAndraMinInfo)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tabbedPanel.addTab("tab4", jPanel4);
-
-        lblLOGGA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ngo_24/SDG+Wheel.png"))); // NOI18N
+        jTabbedPane1.addTab("Min profil", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tabbedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 955, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblValkommen)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblValkommen)
+                                .addGap(660, 660, 660))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblAdmin)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblInloggadAnvandare)))
-                        .addGap(660, 660, 660)
-                        .addComponent(lblLOGGA, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(27, 27, 27)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                                .addComponent(lblInloggadAnvandare)
+                                .addGap(36, 36, 36)))
+                        .addComponent(lblLOGGA, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,78 +221,33 @@ private String ePost;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAdmin)
-                            .addComponent(lblInloggadAnvandare))
-                        .addGap(67, 67, 67))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(lblInloggadAnvandare)))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblLOGGA, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(tabbedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addComponent(lblLOGGA, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void btnAndraAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraAvdelningActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_btnAndraAvdelningActionPerformed
 
-    private void panelAnstalldaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_panelAnstalldaFocusGained
-         panelAvdelning.setVisible(true);
-        txtAreaAvdelning.setText("");
+    private void btbLaggTilAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbLaggTilAvdelningActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btbLaggTilAvdelningActionPerformed
 
-        ArrayList<HashMap<String,String>> allaAvdelning;
+    private void btnAndraMinInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraMinInfoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAndraMinInfoActionPerformed
 
-        try {
-            String sqlAvdelning = "SELECT * FROM avdelning INNER JOIN anstalld ON avdelning.avdid = anstalld.avdelning WHERE anstalld.ePost = '" + ePost +"'";
-            allaAvdelning = idb.fetchRows(sqlAvdelning);
-
-            for(HashMap<String,String> avdelning : allaAvdelning ){
-                txtAreaAvdelning.append(avdelning.get("avdid") + "\t");
-                txtAreaAvdelning.append(avdelning.get("namn") + "\t");
-                txtAreaAvdelning.append(avdelning.get("beskrivning") + "\t");
-                txtAreaAvdelning.append(avdelning.get("adress") + "\t");
-                txtAreaAvdelning.append(avdelning.get("epost") + "\t");
-                txtAreaAvdelning.append(avdelning.get("telefon") + "\t");
-                txtAreaAvdelning.append(avdelning.get("stad") + "\t");
-                txtAreaAvdelning.append(avdelning.get("chef") + "\t");
-
-            }
-        }catch(InfException ex){
-            System.out.println(ex.getMessage());
-
-        }
-
-    }//GEN-LAST:event_panelAnstalldaFocusGained
-
-    private void txtAreaAvdelningFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAreaAvdelningFocusGained
-        panelAvdelning.setVisible(true);
-        txtAreaAvdelning.setText("");
-
-        ArrayList<HashMap<String,String>> allaAvdelning;
-
-        try {
-            String sqlAvdelning = "SELECT * FROM avdelning INNER JOIN anstalld ON avdelning.avdid = anstalld.avdelning WHERE anstalld.ePost = '" + ePost +"'";
-            allaAvdelning = idb.fetchRows(sqlAvdelning);
-
-            for(HashMap<String,String> avdelning : allaAvdelning ){
-                txtAreaAvdelning.append(avdelning.get("avdid") + "\t");
-                txtAreaAvdelning.append(avdelning.get("namn") + "\t");
-                txtAreaAvdelning.append(avdelning.get("beskrivning") + "\t");
-                txtAreaAvdelning.append(avdelning.get("adress") + "\t");
-                txtAreaAvdelning.append(avdelning.get("epost") + "\t");
-                txtAreaAvdelning.append(avdelning.get("telefon") + "\t");
-                txtAreaAvdelning.append(avdelning.get("stad") + "\t");
-                txtAreaAvdelning.append(avdelning.get("chef") + "\t");
-
-            }
-        }catch(InfException ex){
-            System.out.println(ex.getMessage());
-
-        }
-
-    }//GEN-LAST:event_txtAreaAvdelningFocusGained
+    private void btnLandInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLandInfoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLandInfoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -343,21 +285,24 @@ private String ePost;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btbLaggTilAvdelning;
+    private javax.swing.JToggleButton btnAndraAvdelning;
     private javax.swing.JToggleButton btnAndraMinInfo;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JToggleButton btnLandInfo;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JLabel lblAdmin;
     private javax.swing.JLabel lblInloggadAnvandare;
     private javax.swing.JLabel lblLOGGA;
     private javax.swing.JLabel lblValkommen;
-    private javax.swing.JPanel panelAnstallda;
     private javax.swing.JPanel panelAvdelning;
-    private javax.swing.JPanel panelMinInfo;
-    private javax.swing.JTabbedPane tabbedPanel;
     private javax.swing.JTextArea txtAreaAvdelning;
+    private javax.swing.JTextArea txtAreaMinInfo;
+    private javax.swing.JTextArea txtAreaProjekt;
     // End of variables declaration//GEN-END:variables
 }

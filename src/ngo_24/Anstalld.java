@@ -175,31 +175,31 @@ private Handlaggare handlaggare;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void visaAnvandarensInfo() {
+    public void visaProfilInformation() {
         handlaggare.visaProfilInformation();    
 }
     
     
     private void btnSparaAndringarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaAndringarActionPerformed
         // Hämta den nya informationen från textfälten
-        String nyttNamn = txtAndraFornamn.getText();
+        String nyttFörnamn = txtAndraFornamn.getText();
         String nyttEfternamn = txtAndraEfternamn.getText();
         String nyAdress = txtAndraAdress.getText();
         String nyEpost = txtAndraEpost.getText();
         String nyTelefon = txtAndraTelefon.getText();
         
 
-      if (nyttNamn.isEmpty() || nyEpost.isEmpty() || nyTelefon.isEmpty() || nyAdress.isEmpty()) {
+      if (nyttFörnamn.isEmpty() ||nyttEfternamn.isEmpty() || nyAdress.isEmpty()|| nyEpost.isEmpty() || nyTelefon.isEmpty() ) {
         JOptionPane.showMessageDialog(this, "Alla fält måste vara ifyllda.", "Felaktig inmatning", JOptionPane.ERROR_MESSAGE);
         return; // Avbryt sparandet om något fält är tomt
     }
 
     // Anropa metoden för att uppdatera användarens information i Handlaggare-klassen
-    handlaggare.uppdateraAnvandarensInfo(nyttNamn, nyEpost, nyTelefon, nyAdress);
-
+      else {handlaggare.uppdateraAnvandarensInfo(nyttFörnamn,nyttEfternamn,nyAdress,nyEpost,nyTelefon);
+}
     // Stäng fönstret när ändringarna är sparade
     this.dispose();
-}
+
    
     }//GEN-LAST:event_btnSparaAndringarActionPerformed
 
