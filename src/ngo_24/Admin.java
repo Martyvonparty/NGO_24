@@ -67,7 +67,7 @@ private String ePost;
 
         lblLOGGA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ngo_24/SDG+Wheel.png"))); // NOI18N
 
-        btbLaggTilAvdelning.setText("Lägg til avdelning");
+        btbLaggTilAvdelning.setText("Lägg till avdelning");
         btbLaggTilAvdelning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btbLaggTilAvdelningActionPerformed(evt);
@@ -94,7 +94,7 @@ private String ePost;
                 .addGroup(panelAvdelningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAvdelningLayout.createSequentialGroup()
-                        .addGap(0, 610, Short.MAX_VALUE)
+                        .addGap(0, 607, Short.MAX_VALUE)
                         .addComponent(btbLaggTilAvdelning)
                         .addGap(18, 18, 18)
                         .addComponent(btnAndraAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))

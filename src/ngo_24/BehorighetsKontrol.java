@@ -5,6 +5,7 @@
 package ngo_24;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 /**
@@ -20,7 +21,7 @@ public class BehorighetsKontrol {
    
 }
       
-    public boolean kollaHandlaggare(InfDB idb, String ePost) {//Metod som kontrollerar om anställd är handläggare
+    public boolean kollaOmHandlaggare(InfDB idb, String ePost) {//Metod som kontrollerar om anställd är handläggare
     try {
         String sqlFragaAID = "SELECT AID FROM anstalld WHERE ePost = '" + ePost + "'";
         String AID = idb.fetchSingle(sqlFragaAID);
@@ -40,7 +41,7 @@ public class BehorighetsKontrol {
     return false; // Om ingen matchning hittades, returnera false
 }
 
-  public boolean kollaProjektChef(InfDB idb, String ePost) {///Metod som kontrollerar om anställd är projektchef
+  public boolean kollaOmProjektChef(InfDB idb, String ePost) {///Metod som kontrollerar om anställd är projektchef
     boolean isProjektChef = false;
     try {
         String sqlFragaAID = "SELECT AID FROM anstalld WHERE ePost = '" + ePost + "'";
@@ -58,4 +59,33 @@ public class BehorighetsKontrol {
     }
     return isProjektChef;
 }
-}//"SELECT projekt.projektchef, anstalld.* FROM projekt INNER JOIN anstalld ON projekt.projektchef = anstalld.AID where ePost == '" + ePost + "'";
+  
+  public String informationOmAnstalld(InfDB idb, String ePost){
+            HashMap<String, String> infoAnstalld;
+
+    try {
+        // SQL-frågan som den är
+        String sqlFraga = "SELECT fornamn, efternamn, adress, epost, telefon FROM anstalld WHERE epost = '" + ePost + "'";
+        infoAnstalld = idb.fetchRow(sqlFraga);
+
+        if (infoAnstalld != null) {
+            String fornamn = infoAnstalld.get("fornamn");
+            String efternamn = infoAnstalld.get("efternamn");
+            String adress = infoAnstalld.get("adress");
+            String epost = infoAnstalld.get("epost");
+            String telefon = infoAnstalld.get("telefon");
+
+            System.out.println("Fornamn: " + fornamn);
+            System.out.println("Efternamn: " + efternamn);
+            System.out.println("Adress: " + adress);
+            System.out.println("Epost: " + epost);
+            System.out.println("Telefon: " + telefon);
+        } else {
+            System.out.println("Ingen anställd hittades med den angivna e-postadressen.");
+        }
+    } catch (InfException ex) {
+        System.out.println("Ett fel uppstod vid hämtning av anställdinformation: " + ex.getMessage());
+    }
+        return null;
+}
+}

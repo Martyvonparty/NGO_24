@@ -119,14 +119,14 @@ public class Inloggning extends javax.swing.JFrame {
             String dbLosen = idb.fetchSingle(sqlFraga);
             
             if(losen.equals(dbLosen)){
-                boolean isProjektChef = behorighetsKontrol.kollaProjektChef(idb, ePost);
+                boolean isProjektChef = behorighetsKontrol.kollaOmProjektChef(idb, ePost);
                          
              if (isProjektChef){
                  new Handlaggare(idb, ePost,true).setVisible(true);
                  this.setVisible(false);
                  
              }  
-             else if (behorighetsKontrol.kollaHandlaggare(idb, ePost)){
+             else if (behorighetsKontrol.kollaOmHandlaggare(idb, ePost)){
                 new Handlaggare(idb, ePost).setVisible(true);
                         this.setVisible(false);
              }
