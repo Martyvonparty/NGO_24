@@ -34,6 +34,7 @@ private String ePost;
     /**
      * Creates new form Handlaggare
      * @param idb
+     * @param ePost
      */
     public Handlaggare(InfDB idb, String ePost){
         this.idb = idb;
@@ -324,7 +325,7 @@ private String ePost;
     }//GEN-LAST:event_tabbyStateChanged
 
     private void btnAndraMinInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraMinInfoActionPerformed
-       //ANVÄNDS EJ KNAPPEN ÄR FÖRSVUNNEN FRÅN DESIGN
+       //ANVÄNDS EJ KNAPPEN ÄR FÖRSVUNNEN FRÅN DESIGN!!!!!!! OBSS
     }//GEN-LAST:event_btnAndraMinInfoActionPerformed
 
     private void btnAndraProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraProjektActionPerformed
@@ -333,6 +334,7 @@ private String ePost;
 
     private void btbAndraMinInfo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbAndraMinInfo2ActionPerformed
         new andraAnstalld (idb, ePost).setVisible(true);
+        
         
     }//GEN-LAST:event_btbAndraMinInfo2ActionPerformed
 public void uppdateraAnvandarensInfo(String nyttFörnamn,String nyttEfternamn,String nyAdress,String nyEpost,String nyTelefon){
@@ -373,7 +375,9 @@ public void visaAvdelningsInformation (){
         ArrayList<HashMap<String,String>> allaAvdelning;
 
         try {
-            String sqlAvdelning = "SELECT * FROM avdelning INNER JOIN anstalld ON avdelning.avdid = anstalld.avdelning WHERE anstalld.ePost = '" + ePost +"'";
+            String sqlAvdelning = "SELECT * FROM avdelning "
+                    + "INNER JOIN anstalld ON avdelning.avdid = anstalld.avdelning "
+                    + "WHERE anstalld.ePost = '" + ePost +"'";
             allaAvdelning = idb.fetchRows(sqlAvdelning);
 
             for(HashMap<String,String> avdelning : allaAvdelning ){
