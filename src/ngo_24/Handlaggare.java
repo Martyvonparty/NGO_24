@@ -91,6 +91,11 @@ private String ePost;
         txtAreaMinInfo = new javax.swing.JTextArea();
         btnAndraMinInfo = new javax.swing.JToggleButton();
         btbAndraMinInfo2 = new javax.swing.JToggleButton();
+        panelHallbarhetsMal = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtAreaHallbarhetsMal = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaHallbarhetsMal1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,7 +159,7 @@ private String ePost;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelProjektLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnAndraProjekt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -177,7 +182,7 @@ private String ePost;
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -260,12 +265,41 @@ private String ePost;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMinInfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btbAndraMinInfo2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
 
         tabby.addTab("Min  profil", panelMinInfo);
+
+        txtAreaHallbarhetsMal.setColumns(20);
+        txtAreaHallbarhetsMal.setRows(5);
+        jScrollPane5.setViewportView(txtAreaHallbarhetsMal);
+
+        txtAreaHallbarhetsMal1.setColumns(20);
+        txtAreaHallbarhetsMal1.setRows(5);
+        jScrollPane1.setViewportView(txtAreaHallbarhetsMal1);
+
+        javax.swing.GroupLayout panelHallbarhetsMalLayout = new javax.swing.GroupLayout(panelHallbarhetsMal);
+        panelHallbarhetsMal.setLayout(panelHallbarhetsMalLayout);
+        panelHallbarhetsMalLayout.setHorizontalGroup(
+            panelHallbarhetsMalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelHallbarhetsMalLayout.createSequentialGroup()
+                .addGroup(panelHallbarhetsMalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelHallbarhetsMalLayout.setVerticalGroup(
+            panelHallbarhetsMalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelHallbarhetsMalLayout.createSequentialGroup()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 113, Short.MAX_VALUE))
+        );
+
+        tabby.addTab("Hållbarhetsmål", panelHallbarhetsMal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,13 +313,13 @@ private String ePost;
                         .addComponent(lblHandlaggare)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblInloggadAnvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 470, Short.MAX_VALUE)
                 .addComponent(lblLOGGA, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tabby, javax.swing.GroupLayout.PREFERRED_SIZE, 853, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 87, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,9 +333,9 @@ private String ePost;
                             .addComponent(lblInloggadAnvandare)
                             .addComponent(lblHandlaggare)))
                     .addComponent(lblLOGGA, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tabby)
-                .addGap(92, 92, 92))
+                .addContainerGap())
         );
 
         pack();
@@ -319,6 +353,11 @@ private String ePost;
         case 2:
             visaProfilInformation();
             break;
+        case 3:
+            visaHallbarhetsMal();
+            break;
+         
+        
         // Lägg till fler fall för fler flikar om det behövs
     }
     }//GEN-LAST:event_tabbyStateChanged
@@ -392,6 +431,27 @@ public void visaAvdelningsInformation (){
 
         }
 }
+
+public void visaHallbarhetsMal(){
+txtAreaHallbarhetsMal1.setText("");
+ArrayList<HashMap<String,String>> allaHallbarhetsMal;
+try{
+
+String sqlFragaHallbarhetsMal = "SELECT * FROM hallbarhetsmal";
+allaHallbarhetsMal =idb.fetchRows(sqlFragaHallbarhetsMal);
+for(HashMap<String,String> hallbarhetsmal : allaHallbarhetsMal ){
+                txtAreaHallbarhetsMal1.append(hallbarhetsmal.get("hid") + "\t");
+                txtAreaHallbarhetsMal1.append(hallbarhetsmal.get("namn") + "\t");
+                txtAreaHallbarhetsMal1.append(hallbarhetsmal.get("malnummer") + "\t");
+                txtAreaHallbarhetsMal1.append(hallbarhetsmal.get("beskrivning") + "\t");
+                txtAreaHallbarhetsMal1.append(hallbarhetsmal.get("prioritet") + "\n");
+                
+}
+} catch(InfException ex){
+     System.out.println(ex.getMessage());
+
+}
+}
 public void visaProfilInformation(){
     txtAreaMinInfo.setText("");
     HashMap<String,String> anstalldInfo;
@@ -460,19 +520,24 @@ public void visaProfilInformation(){
     private javax.swing.JToggleButton btnAvdelningensAnstallda;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblHandlaggare;
     private javax.swing.JLabel lblInloggadAnvandare;
     private javax.swing.JLabel lblLOGGA;
     private javax.swing.JLabel lblValkommen;
     private javax.swing.JPanel panelAvdelning;
+    private javax.swing.JPanel panelHallbarhetsMal;
     private javax.swing.JPanel panelMinInfo;
     private javax.swing.JPanel panelProjekt;
     private javax.swing.JTabbedPane tabby;
     private javax.swing.JTextArea txtAreaAvdelning;
+    private javax.swing.JTextArea txtAreaHallbarhetsMal;
+    private javax.swing.JTextArea txtAreaHallbarhetsMal1;
     private javax.swing.JTextArea txtAreaMinInfo;
     private javax.swing.JTextArea txtAreaProjekt;
     // End of variables declaration//GEN-END:variables
